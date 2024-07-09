@@ -95,6 +95,9 @@ struct rkvdec_dev {
 	void __iomem *regs;
 	struct mutex vdev_lock; /* serializes ioctls */
 	struct delayed_work watchdog_work;
+	struct reset_control *rstc;
+	u8 reset_mask;
+	unsigned int capabilities;
 };
 
 struct rkvdec_ctx {
