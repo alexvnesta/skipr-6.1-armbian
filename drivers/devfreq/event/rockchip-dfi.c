@@ -18,7 +18,7 @@
 #include <linux/list.h>
 #include <linux/of.h>
 
-#include <soc/rockchip/rk3399_grf.h>
+//#include <soc/rockchip/rk3399_grf.h>
 
 #define PX30_PMUGRF_OS_REG2		0x208
 #define PX30_PMUGRF_OS_REG3		0x20c
@@ -56,7 +56,7 @@
 #define RK3528_PMUGRF_OS_REG18		0x248
 #define RK3528_PMUGRF_OS_REG19		0x24c
 
-#define MAX_DMC_NUM_CH			4
+#define MAX_DMC_NUM_CH			2
 #define READ_DRAMTYPE_INFO(n)		(((n) >> 13) & 0x7)
 #define READ_CH_INFO(n)			(((n) >> 28) & 0x3)
 #define READ_DRAMTYPE_INFO_V3(n, m)	((((n) >> 13) & 0x7) | ((((m) >> 12) & 0x3) << 3))
@@ -65,10 +65,10 @@
 #define READ_LP5_CKR(m)			(((m) >> 0) & 0x1)
 /* DDRMON_CTRL */
 #define DDRMON_CTRL			0x04
-#define CLR_DDRMON_CTRL			(0xffff0000 << 0)
+#define CLR_DDRMON_CTRL            (0x3f0000 << 0) 
 #define LPDDR5_BANK_MODE(m)		((0x30000 | ((m) & 0x3)) << 7)
 #define LPDDR5_EN			(0x10001 << 6)
-#define DDR4_EN				(0x10001 << 5)
+#define DDR4_EN                (0x10001 << 5)
 #define LPDDR4_EN			(0x10001 << 4)
 #define HARDWARE_EN			(0x10001 << 3)
 #define LPDDR2_3_EN			(0x10001 << 2)
@@ -84,17 +84,14 @@
 /* pmu grf */
 #define PMUGRF_OS_REG2			0x308
 
-enum {
-	DDR4 = 0,
-	DDR3 = 3,
-	LPDDR2 = 5,
-	LPDDR3 = 6,
-	LPDDR4 = 7,
-	LPDDR4X = 8,
-	LPDDR5 = 9,
-	DDR5 = 10,
-	UNUSED = 0xFF
-};
+enum {                                                                          
+	DDR4 = 0,  
+	DDR3 = 3,                                                                                
+	LPDDR2 = 5,                                                                              
+	LPDDR3 = 6,                                                                              
+	LPDDR4 = 7,                                                                              
+	UNUSED = 0xFF                                                                            
+};          
 
 struct dmc_usage {
 	u64 access;
