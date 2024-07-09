@@ -16,6 +16,7 @@ int rockchip_pmu_block(void);
 void rockchip_pmu_unblock(void);
 int rockchip_pmu_pd_on(struct device *dev);
 int rockchip_pmu_pd_off(struct device *dev);
+int rockchip_pmu_idle_request(struct device *dev, bool idle);
 bool rockchip_pmu_pd_is_on(struct device *dev);
 int rockchip_pmu_idle_request(struct device *dev, bool idle);
 int rockchip_save_qos(struct device *dev);
