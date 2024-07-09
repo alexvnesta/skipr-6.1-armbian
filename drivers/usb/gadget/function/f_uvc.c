@@ -20,6 +20,7 @@
 #include <linux/usb/video.h>
 #include <linux/vmalloc.h>
 #include <linux/wait.h>
+#include <linux/dma-buf.h>
 
 #include <media/v4l2-dev.h>
 #include <media/v4l2-event.h>
