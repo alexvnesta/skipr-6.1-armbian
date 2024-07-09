@@ -380,7 +380,7 @@ static void rockchip_dfi_start_hardware_counter(struct devfreq_event_dev *edev)
 		/* set ddr type to dfi */
 		if (info->dram_type == LPDDR3 || info->dram_type == LPDDR2)
 			writel_relaxed(LPDDR2_3_EN, dfi_regs + i * mon_idx + DDRMON_CTRL);
-		else if (info->dram_type == LPDDR4 || info->dram_type == LPDDR4X)
+		else if (info->dram_type == LPDDR4)
 			writel_relaxed(LPDDR4_EN, dfi_regs + i * mon_idx + DDRMON_CTRL);
 		else if (info->dram_type == DDR4)
 			writel_relaxed(DDR4_EN, dfi_regs + i * mon_idx + DDRMON_CTRL);
