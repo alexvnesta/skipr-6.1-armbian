@@ -40,15 +40,12 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3326-863-lp3-v10.dtb
 dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3326-863-lp3-v10-avb.dtb
 dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3326-863-lp3-v10-rkisp1.dtb
 dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-a1.dtb
-
 dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-evb.dtb
 dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-nanopi-r2s.dtb
 dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-rock64.dtb
 dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-rock-pi-e.dtb
 dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-roc-cc.dtb
 dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-roc-pc.dtb
-dtb-$(CONFIG_ARCH_ROCKCHIP) += rockchip-rk3328-opp-1.4ghz.dtbo
-dtb-$(CONFIG_ARCH_ROCKCHIP) += rockchip-rk3328-opp-1.5ghz.dtbo
 dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3358-evb-ddr3-v10-linux.dtb
 dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3358m-vehicle-v10.dtb
 dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3368-evb-act8846.dtb
