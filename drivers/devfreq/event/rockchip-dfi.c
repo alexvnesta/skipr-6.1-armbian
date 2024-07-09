@@ -366,10 +366,10 @@ static void rockchip_dfi_start_hardware_counter(struct devfreq_event_dev *edev)
 	if (info->dram_dynamic_info_reg)
 		regmap_read(info->regmap_pmugrf, info->dram_dynamic_info_reg, &val_6);
 
-	if (info->dram_type == LPDDR5) {
-		info->lp5_bank_mode = READ_LP5_BANK_MODE(val_6);
-		info->lp5_ckr = READ_LP5_CKR(val_6);
-	}
+	//if (info->dram_type == LPDDR5) {
+	//	info->lp5_bank_mode = READ_LP5_BANK_MODE(val_6);
+	//	info->lp5_ckr = READ_LP5_CKR(val_6);
+	//}
 
 	for (i = 0; i < MAX_DMC_NUM_CH; i++) {
 		if (!(info->ch_msk & BIT(i)))
@@ -384,9 +384,9 @@ static void rockchip_dfi_start_hardware_counter(struct devfreq_event_dev *edev)
 			writel_relaxed(LPDDR4_EN, dfi_regs + i * mon_idx + DDRMON_CTRL);
 		else if (info->dram_type == DDR4)
 			writel_relaxed(DDR4_EN, dfi_regs + i * mon_idx + DDRMON_CTRL);
-		else if (info->dram_type == LPDDR5)
-			writel_relaxed(LPDDR5_EN | LPDDR5_BANK_MODE(info->lp5_bank_mode),
-				       dfi_regs + i * mon_idx + DDRMON_CTRL);
+		//else if (info->dram_type == LPDDR5)
+		//	writel_relaxed(LPDDR5_EN | LPDDR5_BANK_MODE(info->lp5_bank_mode),
+		//		       dfi_regs + i * mon_idx + DDRMON_CTRL);
 
 		/* enable count, use software mode */
 		writel_relaxed(SOFTWARE_EN, dfi_regs + i * mon_idx + DDRMON_CTRL);
@@ -436,10 +436,10 @@ static int rockchip_dfi_get_busier_ch(struct devfreq_event_dev *edev)
 		/* LPDDR5 LPDDR4 and LPDDR4X BL = 16,other DDR type BL = 8 */
 		tmp = readl_relaxed(dfi_regs +
 				DDRMON_CH0_DFI_ACCESS_NUM + i * mon_idx);
-		if (info->dram_type == LPDDR4 || info->dram_type == LPDDR4X)
+		if (info->dram_type == LPDDR4)
 			tmp *= 8;
-		else if (info->dram_type == LPDDR5)
-			tmp *= 16 / (4 << info->lp5_ckr);
+		//else if (info->dram_type == LPDDR5)
+		//	tmp *= 16 / (4 << info->lp5_ckr);
 		else
 			tmp *= 4;
 		info->ch_usage[i].access = tmp;
@@ -538,10 +538,10 @@ static __maybe_unused __init int rk3588_dfi_init(struct platform_device *pdev,
 		data->dram_type = READ_DRAMTYPE_INFO(val_2);
 
 	data->mon_idx = 0x4000;
-	if (data->dram_type == LPDDR5)
-		data->count_rate = 1;
-	else
-		data->count_rate = 2;
+	//if (data->dram_type == LPDDR5)
+	//	data->count_rate = 1;
+	//else
+	data->count_rate = 2;
 	data->dram_dynamic_info_reg = RK3588_PMUGRF_OS_REG(6);
 	data->ch_msk = READ_CH_INFO(val_2) | READ_CH_INFO(val_4) << 2;
 	data->clk = NULL;
