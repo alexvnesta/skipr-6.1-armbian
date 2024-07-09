@@ -108,12 +108,16 @@
 };
 
 &analog_sound {
-	status = "okay";
+	status = "disabled";
 };
 
 &codec {
-	status = "okay";
+	status = "disabled";
 };
+
+&gmac2phy {
+ 	status = "okay";
+ };
 
 &cpu0 {
 	cpu-supply = <&vdd_arm>;
@@ -161,7 +165,7 @@
 	snps,txpbl = <0x4>;
 	tx_delay = <0x24>;
 	rx_delay = <0x18>;
-	status = "okay";
+	status = "disabled";
 };
 
 &hdmi {
@@ -286,11 +290,11 @@
 };
 
 &i2s0 {
-	status = "okay";
+	status = "disabled";
 };
 
 &i2s1 {
-	status = "okay";
+	status = "disabled";
 };
 
 &io_domains {
@@ -299,7 +303,7 @@
 	vccio1-supply = <&vcc_io>;
 	vccio2-supply = <&vcc18_emmc>;
 	vccio3-supply = <&vcc_sdio>;
-	vccio4-supply = <&vcc_18>;
+	vccio4-supply = <&vcc_io>;
 	vccio5-supply = <&vcc_io>;
 	vccio6-supply = <&vcc_io>;
 	pmuio-supply = <&vcc_io>;
@@ -312,11 +316,38 @@
 		};
 	};
 
-	usb2 {
-		usb20_host_drv: usb20-host-drv {
-			rockchip,pins = <1 RK_PD2 RK_FUNC_GPIO &pcfg_pull_none>;
+ 	usb2 {
+ 		usb20_host_drv: usb20-host-drv {
+			rockchip,pins = <0 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
 		};
 	};
+
+	sd {
+		sdio_vcc_pin: sdio-vcc-pin {
+			rockchip,pins = <2 RK_PC4 RK_FUNC_GPIO &pcfg_pull_up>;
+		};
+	};
+
+	touchscreen {
+		pinctrl_tsc2046_pendown: pinctrl_tsc2046_pendown {
+			rockchip,pins = <1 RK_PC6 RK_FUNC_GPIO &pcfg_pull_up>;
+		};
+		pinctrl_tsc2046_cs: pinctrl_tsc2046_cs {
+			rockchip,pins = <3 RK_PA7 RK_FUNC_GPIO &pcfg_pull_up>;
+		};
+	};
+
+	lcd {
+		pinctrl_st7796_cs: pinctrl_st7796_cs {
+			rockchip,pins = <3 RK_PB0 RK_FUNC_GPIO &pcfg_pull_up>;
+ 		};
+ 	};
+
+	spi0_cs2 {
+		pinctrl_spi0_cs2: pinctrl_spi0_cs2 {
+			rockchip,pins = <1 RK_PC2 RK_FUNC_GPIO &pcfg_pull_up>;
+ 		};
+ 	};
 };
 
 &sdmmc {
