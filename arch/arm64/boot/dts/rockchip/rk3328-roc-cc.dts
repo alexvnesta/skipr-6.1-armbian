@@ -94,7 +94,7 @@
 		compatible = "gpio-leds";
 
 		power_led: led-0 {
-			label = "fefly:blue:power";
+			label = "firefly:blue:power";
 			linux,default-trigger = "heartbeat";
 			gpios = <&rk805 1 GPIO_ACTIVE_LOW>;
 			default-state = "on";
